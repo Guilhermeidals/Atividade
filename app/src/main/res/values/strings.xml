@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Atividade4</string>
+    <string name="home">Iniciar</string>
+    <string name="back">Voltar</string>
+    <string name="next">Proximo</string>
+    <string name="comments">Comentários:</string>
+    <string name="posts">Publicações:</string>
+</resources>

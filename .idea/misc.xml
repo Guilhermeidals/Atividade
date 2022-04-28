@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/lunas/OneDrive/Documentos/Atividade4/app/src/main/res/layout/activity_fourth.xml" value="0.5037037037037037" />
+        <entry key="..\:/Users/lunas/OneDrive/Documentos/Atividade4/app/src/main/res/layout/layout_users_viewholder.xml" value="0.5546875" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/activity_fourth.xml" value="0.5451282051282051" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/activity_second.xml" value="0.3388888888888889" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/activity_third.xml" value="0.3537037037037037" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/layout_comments_viewholder.xml" value="0.3388888888888889" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/layout_posts_viewholder.xml" value="0.1" />
+        <entry key="..\:/Users/lunas/OneDrive/Área de Trabalho/Atividade4/app/src/main/res/layout/layout_users_viewholder.xml" value="0.27380952380952384" />
+        <entry key="app/src/main/res/layout/activity_login_page.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_second.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_third.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_posts_viewholder.xml" value="1.1378936767578125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
