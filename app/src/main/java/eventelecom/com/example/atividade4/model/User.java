@@ -24,6 +24,7 @@ public class User implements Parcelable {
         userName = in.readString();
         name = in.readString();
         email = in.readString();
+        userAddress = (UserAddress) in.readParcelable(UserAddress.class.getClassLoader());
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -94,7 +95,7 @@ public class User implements Parcelable {
         parcel.writeString(getUserName());
         parcel.writeString(getName());
         parcel.writeString(getEmail());
-
+        parcel.writeParcelable(userAddress,i);
     }
 
     public UserAddress getUserAddress() {

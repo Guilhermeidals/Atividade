@@ -7,6 +7,9 @@
         <variable
             name="user"
             type="eventelecom.com.example.atividade4.model.User" />
+        <variable
+            name="address"
+            type="eventelecom.com.example.atividade4.model.UserAddress" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -56,7 +56,6 @@ public class UserAddress implements Parcelable {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
     public static final Creator<UserAddress> CREATOR = new Creator<UserAddress>() {
         @Override
         public UserAddress createFromParcel(Parcel in) {
