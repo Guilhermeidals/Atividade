@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Atividade4">
         <activity
-            android:name=".UI.FourthActivity"
+            android:name=".UI.UsersDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.SecondActivity"
+            android:name=".UI.UsersActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.ThirdActivity"
+            android:name=".UI.PostsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.CommentsActivity"
             android:exported="false" />
         <activity
             android:name=".UI.MainPage"

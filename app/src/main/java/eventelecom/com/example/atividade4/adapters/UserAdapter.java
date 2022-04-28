@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,11 +16,26 @@ import eventelecom.com.example.atividade4.model.User;
 import eventelecom.com.example.atividade4.R;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder>{
-    private List<User> listaUsers;
 
-    public UserAdapter(List<User> listaUsers) {
-        this.listaUsers = listaUsers;
+    public interface ClickListener {
+        void OnClick(User user);
     }
+
+    private List<User> listaUsers = new ArrayList<>();
+    private ClickListener clickListener;
+
+    public UserAdapter(ClickListener clickListener) {
+        this.listaUsers = listaUsers;
+        this.clickListener = clickListener;
+    }
+
+    public void setUsers(List<User> users){
+        this.listaUsers = users;
+        notifyDataSetChanged();
+    }
+
+
+
 
     @NonNull
     @Override
@@ -35,7 +52,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        holder.layoutUsersViewholderBinding.setVarUser(listaUsers.get(position));
+        User user = listaUsers.get(position);
+        holder.layoutUsersViewholderBinding.setVarUser(user);
+        holder.layoutUsersViewholderBinding.getRoot().setOnClickListener(v -> clickListener.OnClick(user));
     }
 
     class UserViewHolder extends RecyclerView.ViewHolder {

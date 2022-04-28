@@ -31,7 +31,7 @@ public class MainPage extends AppCompatActivity {
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SecondActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PostsActivity.class);
                 Toast.makeText(MainPage.this,"Avançando",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

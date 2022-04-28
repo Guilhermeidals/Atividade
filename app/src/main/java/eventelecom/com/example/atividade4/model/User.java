@@ -9,12 +9,14 @@ public class User implements Parcelable {
     private String userName;
     private String name;
     private String email;
+    private UserAddress userAddress;
 
-    public User(int id, String userName, String name, String email) {
+    public User(int id, String userName, String name, String email, UserAddress userAddress) {
         this.id = id;
         this.userName = userName;
         this.name = name;
         this.email = email;
+        this.userAddress = userAddress;
     }
 
     protected User(Parcel in) {
@@ -93,5 +95,13 @@ public class User implements Parcelable {
         parcel.writeString(getName());
         parcel.writeString(getEmail());
 
+    }
+
+    public UserAddress getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(UserAddress userAddress) {
+        this.userAddress = userAddress;
     }
 }

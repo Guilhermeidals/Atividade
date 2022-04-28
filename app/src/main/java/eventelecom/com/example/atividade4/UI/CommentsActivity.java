@@ -23,28 +23,26 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import eventelecom.com.example.atividade4.model.Comments;
 import eventelecom.com.example.atividade4.R;
 import eventelecom.com.example.atividade4.adapters.CommentsAdapter;
-import eventelecom.com.example.atividade4.adapters.UserAdapter;
-import eventelecom.com.example.atividade4.model.Comments;
-import eventelecom.com.example.atividade4.model.User;
 
-public class FourthActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener {
+public class CommentsActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fourth);
+        setContentView(R.layout.activity_comments);
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://jsonplaceholder.typicode.com/users";
+        String url ="https://jsonplaceholder.typicode.com/comments";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                url, null, this, this);
+                url, null,this, this);
 
         queue.add(request);
 
-        View HomeBtn = findViewById(R.id.FABack);
-        View NextBtn = findViewById(R.id.FANext);
+        View HomeBtn = findViewById(R.id.ASHome);
+        View NextBtn = findViewById(R.id.ASNext);
 
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +54,8 @@ public class FourthActivity extends AppCompatActivity implements Response.Listen
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FourthActivity.class);
-                Toast.makeText(FourthActivity.this, "Avançando", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), UsersActivity.class);
+                Toast.makeText(CommentsActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -65,19 +63,19 @@ public class FourthActivity extends AppCompatActivity implements Response.Listen
 
     @Override
     public void onResponse(JSONArray response) {
-        List<User> list = new ArrayList<>();
+        List<Comments> list = new ArrayList<>();
 
-        for (int i = 0; i < response.length(); i++) {
+        for(int i = 0; i < response.length(); i++){
             try {
                 Log.d("onResponse: ", response.get(i).toString());
-                list.add(new User(response.getJSONObject(i).getInt("id"), response.getJSONObject(i).getString("username"), response.getJSONObject(i).getString("name"), response.getJSONObject(i).getString("email")));
+                list.add(new Comments(response.getJSONObject(i).getInt("postId"),response.getJSONObject(i).getInt("id") ,response.getJSONObject(i).getString("name"), response.getJSONObject(i).getString("email"), response.getJSONObject(i).getString("body")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        UserAdapter uAdapt = new UserAdapter(list);
-        RecyclerView rv = findViewById(R.id.FARV);
-        rv.setAdapter(uAdapt);
+        CommentsAdapter cAdapt = new CommentsAdapter(list);
+        RecyclerView rv = findViewById(R.id.RVComMents);
+        rv.setAdapter(cAdapt);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
     }
@@ -87,4 +85,5 @@ public class FourthActivity extends AppCompatActivity implements Response.Listen
     public void onErrorResponse(VolleyError error) {
         error.printStackTrace();
     }
+
 }

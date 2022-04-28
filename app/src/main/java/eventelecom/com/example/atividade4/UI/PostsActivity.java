@@ -26,12 +26,12 @@ import eventelecom.com.example.atividade4.model.Posts;
 import eventelecom.com.example.atividade4.R;
 import eventelecom.com.example.atividade4.adapters.PostsAdapter;
 
-public class SecondActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener{
+public class PostsActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_posts);
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://jsonplaceholder.typicode.com/posts";
 
@@ -47,7 +47,7 @@ public class SecondActivity extends AppCompatActivity implements Response.Listen
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainPage.class);
-                Toast.makeText(SecondActivity.this, "Voltando", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PostsActivity.this, "Voltando", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
@@ -55,8 +55,8 @@ public class SecondActivity extends AppCompatActivity implements Response.Listen
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ThirdActivity.class);
-                Toast.makeText(SecondActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
+                Toast.makeText(PostsActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
