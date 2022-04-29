@@ -17,24 +17,14 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         View HomeBtn = findViewById(R.id.MPHomeButton);
-        View NextBtn = findViewById(R.id.MPNextButton);
 
         HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainPage.class);
-                Toast.makeText(MainPage.this, "Voltando", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),PostsActivity.class);
+                Toast.makeText(MainPage.this, "Iniciando", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 }
-        });
-
-        NextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PostsActivity.class);
-                Toast.makeText(MainPage.this,"Avançando",Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
         });
 
     }

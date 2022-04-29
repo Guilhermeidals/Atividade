@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.Objects;
 
-public class Comments implements Parcelable {
+public class    Comments implements Parcelable {
     private int id;
     private int postUserId;
     private String name;

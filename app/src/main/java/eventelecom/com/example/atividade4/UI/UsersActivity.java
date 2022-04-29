@@ -66,7 +66,7 @@ public class UsersActivity extends AppCompatActivity implements Response.Listene
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), UsersActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AlbumsActivity.class);
                 Toast.makeText(UsersActivity.this, "Avançando", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }

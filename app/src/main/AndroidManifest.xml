@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Atividade4">
         <activity
+            android:name=".UI.AlbumsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.UsersDetailsActivity"
             android:exported="false" />
         <activity

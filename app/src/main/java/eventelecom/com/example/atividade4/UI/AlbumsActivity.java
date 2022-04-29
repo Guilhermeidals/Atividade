@@ -22,66 +22,66 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-import eventelecom.com.example.atividade4.model.Posts;
 import eventelecom.com.example.atividade4.R;
-import eventelecom.com.example.atividade4.adapters.PostsAdapter;
+import eventelecom.com.example.atividade4.adapters.AlbumsAdapter;
+import eventelecom.com.example.atividade4.model.Albums;
 
-public class PostsActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener{
+public class AlbumsActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_posts);
+        setContentView(R.layout.activity_albums);
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://jsonplaceholder.typicode.com/posts";
+        String url = "https://jsonplaceholder.typicode.com/albums";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                url, null,this, this);
+                url,null,this,this);
 
         queue.add(request);
 
-        View HomeBtn = findViewById(R.id.ASHome);
-        View NextBtn = findViewById(R.id.ASNext);
+        View backBtn = findViewById(R.id.AlbumsBack);
+        View nextBtn = findViewById(R.id.AlbumsNext);
 
-        HomeBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
 
-        NextBtn.setOnClickListener(new View.OnClickListener() {
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
-                Toast.makeText(PostsActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
+//                Toast.makeText(AlbumsActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
+//                startActivity(intent);
             }
         });
     }
 
     @Override
     public void onResponse(JSONArray response) {
-        List<Posts> list = new ArrayList<>();
+        List<Albums> list = new ArrayList<>();
 
-        for(int i = 0; i < response.length(); i++){
+        for (int i=0;i<response.length();i++){
             try {
-                list.add(new Posts(response.getJSONObject(i).getInt("id"), response.getJSONObject(i).getString("title"), response.getJSONObject(i).getString("body"),
-                        response.getJSONObject(i).getInt("userId")));
+                list.add(new Albums(response.getJSONObject(i).getInt("userId"),
+                        response.getJSONObject(i).getInt("id"),
+                        response.getJSONObject(i).getString("title")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        PostsAdapter pAdapt = new PostsAdapter(list);
-        RecyclerView rv = findViewById(R.id.RVPosts);
-        rv.setAdapter(pAdapt);
+        AlbumsAdapter AAdapter = new AlbumsAdapter(list);
+        RecyclerView rv = findViewById(R.id.AlbumsRV);
+        rv.setAdapter(AAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
-
     @Override
     public void onErrorResponse(VolleyError error) {
-        error.printStackTrace();
-    }
 
+    }
 }
