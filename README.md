@@ -10,4 +10,4 @@
 
 ## Video:
 
-[Baixar video de demonstração](https://github.com/Guilhermeidals/Atividade/blob/backup/Atividade.mp4)
+[Baixar video de demonstração](https://github.com/Guilhermeidals/Atividade/blob/backup/Atividade.mp4?raw=true)
