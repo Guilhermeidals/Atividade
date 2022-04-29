@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,60 +22,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eventelecom.com.example.atividade4.R;
-import eventelecom.com.example.atividade4.adapters.AlbumsAdapter;
-import eventelecom.com.example.atividade4.model.Albums;
+import eventelecom.com.example.atividade4.adapters.PhotosAdapter;
+import eventelecom.com.example.atividade4.model.Photos;
 
-public class AlbumsActivity extends AppCompatActivity implements Response.Listener<JSONArray>, Response.ErrorListener {
+public class PhotosActivity extends AppCompatActivity implements Response.Listener<JSONArray>,Response.ErrorListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_albums);
+        setContentView(R.layout.activity_photos);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://jsonplaceholder.typicode.com/albums";
+        String url = "https://jsonplaceholder.typicode.com/photos";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
                 url,null,this,this);
 
         queue.add(request);
 
-        View backBtn = findViewById(R.id.AlbumsBack);
-        View nextBtn = findViewById(R.id.AlbumsNext);
+        View backBtn = findViewById(R.id.PhotosBack);
+        View homeBtn = findViewById(R.id.PhotosHome);
 
-        backBtn.setOnClickListener(new View.OnClickListener(){
+        homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finishAffinity();
+                startActivity(new Intent(getApplicationContext(),MainPage.class));
             }
         });
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
-                Toast.makeText(AlbumsActivity.this,"Avançando",Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                finish();
             }
         });
     }
 
     @Override
     public void onResponse(JSONArray response) {
-        List<Albums> list = new ArrayList<>();
+        List<Photos> list = new ArrayList<>();
 
-        for (int i=0;i<response.length();i++){
+        for (int i = 0; i < response.length(); i++){
             try {
-                list.add(new Albums(response.getJSONObject(i).getInt("userId"),
-                        response.getJSONObject(i).getInt("id"),
-                        response.getJSONObject(i).getString("title")));
+                list.add(new Photos(response.getJSONObject(i).getInt("id"),
+                        response.getJSONObject(i).getInt("albumId"),
+                        response.getJSONObject(i).getString("title"),
+                        response.getJSONObject(i).getString("url"),
+                        response.getJSONObject(i).getString("thumbnailUrl")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        AlbumsAdapter AAdapter = new AlbumsAdapter(list);
-        RecyclerView rv = findViewById(R.id.AlbumsRV);
-        rv.setAdapter(AAdapter);
+        PhotosAdapter PAdapter = new PhotosAdapter(list);
+        RecyclerView rv = findViewById(R.id.PhotosRV);
+        rv.setAdapter(PAdapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
