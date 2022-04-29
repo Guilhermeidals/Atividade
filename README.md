@@ -8,3 +8,6 @@
 
 - criar telas de detalhe do item selecionado no recyclerview, usando databinding;
 
+## Video:
+
+[Baixar video de demonstração](https://github.com/Guilhermeidals/Atividade/blob/backup/Atividade.mp4)
